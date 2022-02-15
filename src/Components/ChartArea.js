@@ -17,7 +17,7 @@ function ChartArea(props) {
     color: theme.palette.text.secondary,
   }));
 
-  let charts = [ <BarChart />, <PieChart />, <TreeChart /> ];
+  let charts = [<BarChart />, <PieChart />, <TreeChart />];
 
   return (
     <div>
@@ -25,12 +25,12 @@ function ChartArea(props) {
         <Grid item>
           <Item>
             {/* {props.numPage < 11 ? charts[0] : props.numPage < 21 ? charts[1] : charts[2]} */}
-            {props.numPage ? 
-            <img
-            style={{width: '350px'}}
-            src={require(`../Charts/${props.numPage < 11 ? "B" + props.numPage + ".png" : props.numPage < 21 ? "D" + (props.numPage - 10) + ".png" : "P" + (props.numPage - 20) + ".png"}`)} 
-            alt="barChart" />
-            : null}
+            {props.numPage ?
+              <img
+                style={{ width: '350px' }}
+                src={require(`../Charts/${props.numPage < 26 ? "B" + props.numPage + ".png" : props.numPage < 51 ? "D" + (props.numPage - 25) + ".png" : "P" + (props.numPage - 50) + ".png"}`)}
+                alt="barChart" />
+              : null}
           </Item>
         </Grid>
       </Grid>

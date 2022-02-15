@@ -43,10 +43,16 @@ function App() {
   const [currentChart, changeCurrentChart] = useState('');
   let textInput = useRef(null);
 
-  let truePercentages = [69.23, 
+  let truePercentages = [69.23,
     66.67, 87.95, 11.48, 97.83, 51.79, 20.62, 5.56, 39.02, 64.52,
+    15.48, 60.00, 8.06, 72.22, 73.47, 100, 28.95, 36.17, 30.91, 85.51, 34.29,
+    28.57, 50.00, 93.98, 47.30,
     94.68, 97.65, 33.87, 52.08, 36.84, 87.50, 18.68, 95.38, 22.58, 89.01,
-    64.56, 67.02, 89.47, 45.83, 15.91, 6.56, 29.55, 25.00, 77.78, 96.72
+    72.62, 3.90, 5.21, 73.81, 36.67, 15.00, 58.33, 72.73, 8.57, 67.11, 79.55,
+    72.09, 79.55, 8.97, 94.87,
+    64.56, 67.02, 89.47, 45.83, 15.91, 6.56, 29.55, 25.00, 77.78, 96.72, 95.79,
+    76.81, 97.73, 8.08, 81.54, 26.09, 63.33, 34.44, 74.07, 17.39, 64.63, 31.48,
+    88.71, 81.82, 30.86
   ];
 
   const makeid = (length) => {
@@ -79,7 +85,7 @@ function App() {
   });
 
   const addTrial = () => {
-    trial.type = page < 11 ? 'barchart' : page < 21 ? 'donutchart' : 'piechart';
+    trial.type = page < 26 ? 'barchart' : page < 51 ? 'donutchart' : 'piechart';
     trial.truePercentage = truePercentages[page - 1];
     textInput.current.value = '';
     changeTrials([...trials, trial]);
@@ -105,15 +111,15 @@ function App() {
       <header>
         {<Introductions numPage={page} />}
         <div style={{ textAlign: 'center' }}>
-          {page > 0 && page < 31 ? <ChartArea numPage={page} updateChartType={updateChartType} /> : null}
+          {page > 0 && page < 76 ? <ChartArea numPage={page} updateChartType={updateChartType} /> : null}
         </div>
-        {page === 31 ?
+        {page === 76 ?
           <div style={{ textAlign: 'center' }}>
             <p>Thank you for your participation!</p>
             <p>Please send the CSV to dcorreiadasilva@wpi.edu</p>
             <p>Your results:</p>
             <MaterialTable
-              style={{"marginBottom": "20px"}}
+              style={{ "marginBottom": "20px" }}
               title="Results"
               options={{
                 search: false,
@@ -139,13 +145,13 @@ function App() {
           :
           <div>
             <Grid style={{ marginTop: "15px" }} justifyContent={'center'} container rowSpacing={2} >
-              {page > 0 ? 
-              <Grid item xs={12}>
-                <div style={{"textAlign" : 'center'}}>
-                <p style={{'fontSize': '30'}}>What do you think the percent of the smaller value to the larger value?</p>
-                <p>(Eg.: if you think the smaller is exactly half of the bigger one, input 50 )</p>
-                </div>
-              </Grid> : <></>}
+              {page > 0 ?
+                <Grid item xs={12}>
+                  <div style={{ "textAlign": 'center' }}>
+                    <p style={{ 'fontSize': '30' }}>What do you think the percent of the smaller value to the larger value?</p>
+                    <p>(Eg.: if you think the smaller is exactly half of the bigger one, input 50 )</p>
+                  </div>
+                </Grid> : <></>}
               {page > 0 ? <Grid item>
                 <CssTextField
                   id="input-textfield"
